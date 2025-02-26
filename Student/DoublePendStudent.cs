@@ -17,17 +17,32 @@ public partial class DoublePendSim : Simulator
     {
         double theta1 = xx[0];
         double theta2 = xx[1];
-        double u1 = xx[2];
-        double u2 = xx[3];
+        double omega1 = xx[2];
+        double omega2 = xx[3];
 
         // Evaluate right sides of differential equations of motion
         //********************************************************************
         // Students enter equations of motion below
         //********************************************************************
-        ff[0] = 0.0;   // time derivative of state theta1
-        ff[1] = 0.0;   // time derivative of state theta2
-        ff[2] = 0.0;   // time derivative of state u1
-        ff[3] = 0.0;   // time derivative of state u2
+
+        double cosTheta2 = Math.Cos(theta2);
+        double sinTheta2 = Math.Sin(theta2);
+
+        double A = (m1+m2)*L1*L1;
+        double B = m2*L1*L2*cosTheta2;
+        double C = B;
+        double D = m2*L2*L2;
+        double det = A*D - B*C;
+
+        double R1 = m2*L1*L2*omega2*omega2*sinTheta2 - 
+            (m1+m2)*g*L1*Math.Sin(theta1);
+        double R2 = -m2*L1*L2*omega1*omega1*sinTheta2 - 
+            m2*g*L2*Math.Sin(theta1+theta2);
+
+        ff[0] = omega1;   // time derivative of state theta1
+        ff[1] = omega2 - omega1;   // time derivative of state theta2
+        ff[2] = (D*R1 - B*R2)/det;   
+        ff[3] = (-C*R1 + A*R2)/det;   // time derivative of state omega2
     }
 
     //******************************************************************
