@@ -1,7 +1,7 @@
 //============================================================================
 // EulerKinemSim.cs   Given an angular velocity, integrate differential
 //        equations for the Euler angles which achieves the provided angular
-//        velocity
+//        velocity.  STUDENT INTERFACE.
 //============================================================================
 using System;
 
@@ -12,7 +12,7 @@ public partial class EulerKinemSim : Simulator
     double omegaYB;         // B.y component of angular velocity
     double omegaZB;         // B.z component of angular velocity
 
-//------------------------------------------------------------------------
+    //------------------------------------------------------------------------
     // RHSFuncYPR: Define kinematic differential equations for Yaw-Pitch-Roll
     //             Euler angles
     //------------------------------------------------------------------------
