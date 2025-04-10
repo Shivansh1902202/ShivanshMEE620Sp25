@@ -1,0 +1,91 @@
+[gd_scene load_steps=10 format=3 uid="uid://d37uxgowo3fop"]
+
+[ext_resource type="Script" path="res://Worlds/PlayterDoll.cs" id="1_ae45y"]
+[ext_resource type="Texture2D" uid="uid://dhdpq1uwdhn6y" path="res://Textures/kennyDK4.png" id="1_yfyyj"]
+[ext_resource type="PackedScene" uid="uid://c6libmpjpamkh" path="res://Utils/CamRig.tscn" id="3_boaiw"]
+[ext_resource type="PackedScene" uid="uid://lrgbvfvjoc32" path="res://Models/PDollModel.tscn" id="4_6wxni"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ax8bb"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_xpa00"]
+sky_material = SubResource("ProceduralSkyMaterial_ax8bb")
+
+[sub_resource type="Environment" id="Environment_tep7x"]
+background_mode = 2
+sky = SubResource("Sky_xpa00")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fewck"]
+albedo_texture = ExtResource("1_yfyyj")
+uv1_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ibyyb"]
+material = SubResource("StandardMaterial3D_fewck")
+size = Vector2(20, 20)
+
+[node name="PlayterDoll" type="Node3D"]
+script = ExtResource("1_ae45y")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tep7x")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.500003, -0.75, 0.43301, 1.47562e-08, 0.499998, 0.866027, -0.866023, -0.433016, 0.250002, 0, 8, 0)
+shadow_enabled = true
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("PlaneMesh_ibyyb")
+
+[node name="CamRig" parent="." instance=ExtResource("3_boaiw")]
+
+[node name="PDollModel" parent="." instance=ExtResource("4_6wxni")]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MgCTL" type="MarginContainer" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+
+[node name="pContain" type="PanelContainer" parent="Control/MgCTL"]
+layout_mode = 2
+
+[node name="MC" type="MarginContainer" parent="Control/MgCTL/pContain"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="MgCTR" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="pContain" type="PanelContainer" parent="Control/MgCTR"]
+layout_mode = 2
+
+[node name="MC" type="MarginContainer" parent="Control/MgCTR/pContain"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8

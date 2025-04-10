@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dk6x0qm2sau1d"
-path.s3tc="res://.godot/imported/boxTex3.png-b040655da4e75b618466d3939258a91a.s3tc.ctex"
+uid="uid://l5lfmkfl5x3e"
+path.s3tc="res://.godot/imported/boxTexVibO_BGo.png-cc60b74107e8fe916b93ccf72a79f100.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Textures/boxTex3.png"
-dest_files=["res://.godot/imported/boxTex3.png-b040655da4e75b618466d3939258a91a.s3tc.ctex"]
+source_file="res://Textures/boxTexVibO_BGo.png"
+dest_files=["res://.godot/imported/boxTexVibO_BGo.png-cc60b74107e8fe916b93ccf72a79f100.s3tc.ctex"]
 
 [params]
 
